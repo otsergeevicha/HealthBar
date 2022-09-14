@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public event Action<float> HealthChanged;
+    public event Action<float, float> HealthChanged;
+    private float _maxHealth = 100;
     private float _health = 100;
 
-    public void TryGiveDamage(float damageAmount)
+    public void CauseDamage(float damageAmount)
     {
-        if ( _health > 0 && _health >= damageAmount)
+        if ( _health > 0 && _health >= damageAmount )
         {
             TakeDamage(damageAmount);
         }
@@ -18,25 +19,24 @@ public class Player : MonoBehaviour
             _health = 0;
         }
     }
-    
-    public void TryGiveHeal(float healAmount)
+
+    public void CauseHeal(float healAmount)
     {
-        if ( _health != 0 )
+        if ( _health != 0 && _health != _maxHealth)
         {
             TakeHeal(healAmount);
         }
     }
-    
+
     private void TakeHeal(float heal)
     {
         _health += heal;
-        HealthChanged?.Invoke(_health);
+        HealthChanged?.Invoke(_health, _maxHealth);
     }
-    
+
     private void TakeDamage(float damage)
     {
-
         _health -= damage;
-        HealthChanged?.Invoke(_health);
+        HealthChanged?.Invoke(_health, _maxHealth);
     }
 }

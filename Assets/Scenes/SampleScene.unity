@@ -320,7 +320,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1319301966}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: TryGiveDamage
+        m_MethodName: CauseDamage
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -671,7 +671,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1319301966}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: TryGiveHeal
+        m_MethodName: CauseHeal
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
